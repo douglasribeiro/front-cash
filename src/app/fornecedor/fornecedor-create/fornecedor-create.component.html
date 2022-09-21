@@ -1,0 +1,38 @@
+<div class="container mat-elevation-z8">
+    <div *ngIf="formulario">
+        <form class="form">
+
+            <h1>Cadastrar Fornecedor</h1>
+            <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Dics de um DEV">
+
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Nome</mat-label>
+                <input [(ngModel)]="fornecedor.nome" name="nome" [formControl]="nome" required matInput
+                    placeholder="Ex. Nome Fornecedor">
+            </mat-form-field>
+
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>E-mail</mat-label>
+                <input [(ngModel)]="fornecedor.email" name="email" [formControl]="email" matInput
+                    placeholder="Ex. fornecedor@email.com">
+            </mat-form-field>
+
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Telefone</mat-label>
+                <input [(ngModel)]="fornecedor.telefone" name="telefone" [formControl]="telefone" matInput
+                    placeholder="Ex. (11) 1111-1111">
+            </mat-form-field>
+
+            <mat-form-field class="midWidth" appearance="legacy">
+                <mat-label>Observação</mat-label>
+                <input name="observacao" [formControl]="observacao" [(ngModel)]="fornecedor.observacao" matInput>
+            </mat-form-field>
+
+            <button (click)="create()" [disabled]="!validaCampos()" class="midWidth mat-elevation-z4" mat-flat-button
+                color="primary">Cadastrar</button>
+            <button routerLink="/fornecedor" class="midWidth mat-elevation-z4" mat-stroked-button
+                color="primary">Voltar</button>
+        </form>
+    </div>
+
+</div>

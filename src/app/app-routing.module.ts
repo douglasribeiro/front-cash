@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: NavComponent, canActivate: [AuthGuard], children: [
     {path: 'home', component: HomeComponent},
-    {path: 'fornecedor', loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule)}
+    {path: 'fornecedor', loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule)},
+    {path: 'contas', loadChildren: () => import('./contas/contas.module').then(m => m.ContasModule)}
   ]},
   
 ];

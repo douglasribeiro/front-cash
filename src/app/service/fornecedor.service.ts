@@ -9,6 +9,8 @@ import { Fornecedor } from '../model/fornecedor';
 })
 export class FornecedorService {
 
+  fornecedorDto: Fornecedor;
+
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Fornecedor[]> {

@@ -1,3 +1,5 @@
+import { Usuario } from "./usuario";
+
 export interface Fornecedor{
     
     id: string;
@@ -5,4 +7,5 @@ export interface Fornecedor{
     email: string;
     telefone: string;
     observacao: string;
+    usuario: Usuario;
 }

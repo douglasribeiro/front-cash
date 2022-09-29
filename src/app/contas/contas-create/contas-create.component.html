@@ -1,0 +1,93 @@
+<div class="container mat-elevation-z8">
+    <div *ngIf="form">
+        <form class="form" [formGroup]="form">
+
+            <h1>Cadastrar Compromissos</h1>
+            <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Dics de um DEV">
+
+            <div class="fullwidth">
+                <mat-form-field appearance="legacy" class="midWidth">
+                    <mat-label>Fornecedor</mat-label>
+                    <mat-select id="fornecedor" formControlName="fornecedor" required="true">
+                      <mat-option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id" >
+                        {{fornecedor.nome}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            
+                <mat-form-field appearance="legacy" class="midWidth">
+                    <mat-label>Situação</mat-label>
+                    <mat-select name="situacao" id="situacao" formControlName="situacao" required="true">
+                    <mat-option *ngFor="let key of keys" [value]="key">
+                        {{situacao[key]}}
+                    </mat-option>
+                    </mat-select>
+              </mat-form-field>
+            </div>
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Descrição</mat-label>
+                <input name="descr" formControlName="descr" required matInput
+                    placeholder="Ex. Fornecimento de energia eletrica">
+            </mat-form-field>
+
+            <div class="fullwidth">
+                <mat-form-field appearance="standard" class="treeWidth">
+                    <mat-label>Data Vencimento</mat-label>
+                    <input matInput [matDatepicker]="dtVenc" formControlName="dtVenc" name="dtVenc" #date required="true">
+                    <mat-datepicker-toggle matSuffix [for]="dtVenc"></mat-datepicker-toggle>
+                    <mat-datepicker #dtVenc></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="standard" class="treeWidth">
+                    <mat-label>Data Pagamento</mat-label>
+                    <input matInput [matDatepicker]="dtPagto" formControlName="dtPagto" name="dtPagto" #date>
+                    <mat-datepicker-toggle matSuffix [for]="dtPagto"></mat-datepicker-toggle>
+                    <mat-datepicker #dtPagto></mat-datepicker>
+                </mat-form-field>
+                
+                <mat-form-field class="treeWidth" appearance="legacy">
+                    <mat-label>Valor</mat-label>
+                    <input matInput currencyMask name="valorInicial" formControlName="valorInicial" required="true"
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+                        placeholder="Ex. R$ 100,00">
+                </mat-form-field>
+
+            </div>
+
+            <div class="fullwidth">
+                <mat-form-field class="treeWidth" appearance="legacy">
+                    <mat-label>Valor Juro</mat-label>
+                    <input matInput currencyMask name="valorJuro" formControlName="valorJuro"
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+                        placeholder="Ex. R$ 100,00">
+                </mat-form-field>
+
+                <mat-form-field class="treeWidth" appearance="legacy">
+                    <mat-label>Valor Desconto</mat-label>
+                    <input matInput currencyMask name="valorDesconto" formControlName="valorDesconto"
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+                        placeholder="Ex. R$ 100,00">
+                </mat-form-field>
+
+                <mat-form-field class="treeWidth" appearance="legacy">
+                    <mat-label>Valor Pago</mat-label>
+                    <input matInput currencyMask name="valorPago" formControlName="valorPago"
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+                        placeholder="Ex. R$ 100,00">
+                </mat-form-field>
+            </div>
+
+            <div class="fullwidth">
+                <mat-form-field class="ripple-form-field treeWidth" appearance="legacy" >
+                    <input matInput name="replica" formControlName="replica" type="number" placeholder="Replica o lançamento">
+                </mat-form-field>
+            </div>
+
+            <button (click)="create()" [disabled]="!validaCampos()" class="midWidth mat-elevation-z4" mat-flat-button
+                color="primary">Cadastrar</button>
+            <button routerLink="/fornecedor" class="midWidth mat-elevation-z4" mat-stroked-button
+                color="primary">Voltar</button>
+        </form>
+    </div>
+
+</div>

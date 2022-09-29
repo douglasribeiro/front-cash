@@ -27,7 +27,8 @@ export class FornecedorCreateComponent implements OnInit {
     nome:       '',
     email:      '',
     telefone:   '',
-    observacao: ''
+    observacao: '',
+    usuario: null
   }
 
   id:           FormControl = new FormControl(null);
